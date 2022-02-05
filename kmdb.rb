@@ -70,8 +70,14 @@
 # Use `Model.destroy_all` code.
 # TODO!
 Movie.destroy_all
+Person.destroy_all
 
 # Generate models and tables, according to the domain model
+# TODO!
+
+
+# Insert data into your database that reflects the sample data shown above
+# Do not use hard-coded foreign key IDs.
 # TODO!
 
 BatmanBegins = Movie.new
@@ -81,11 +87,56 @@ BatmanBegins.rated = "PG-13"
 BatmanBegins.person_id = "Christopher Nolan"
 BatmanBegins.save
 
-puts "There are #{Movie.all.count} movies"
+TheDarkKnight = Movie.new
+TheDarkKnight.title = "The Dark Knight"
+TheDarkKnight.year = "2008"
+TheDarkKnight.rated = "PG-13"
+TheDarkKnight.person_id = "Christopher Nolan"
+TheDarkKnight.save
 
-# Insert data into your database that reflects the sample data shown above
-# Do not use hard-coded foreign key IDs.
-# TODO!
+TheDarkKnightRises = Movie.new
+TheDarkKnightRises.title = "The Dark Knight"
+TheDarkKnightRises.year = "2008"
+TheDarkKnightRises.rated = "PG-13"
+TheDarkKnightRises.person_id = "Christopher Nolan"
+TheDarkKnightRises.save
+
+ChristianBale = Person.new
+ChristianBale.name = "Christian Bale"
+ChristianBale.save
+MichaelCaine = Person.new
+MichaelCaine.name = "Michael Caine"
+MichaelCaine.save
+LiamNeeson = Person.new
+LiamNeeson.name = "Liam Neeson"
+LiamNeeson.save
+KatieHolmes = Person.new
+KatieHolmes.name = "Katie Holmes"
+GaryOldman = Person.new
+GaryOldman.name = "Gary Oldman"
+GaryOldman.save
+HeathLedger = Person.new
+HeathLedger.name = "Heath Ledger"
+HeathLedger.save
+AaronEckhart = Person.new
+AaronEckhart.name = "Aaron Eckhart"
+AaronEckhart.save
+MaggieGyllenhaal = Person.new
+MaggieGyllenhaal.name = "Maggie Gyllenhaal"
+MaggieGyllenhaal.save
+TomHardy = Person.new
+TomHardy.name = "Tom Hardy"
+TomHardy.save
+JosephGordonLevitt = Person.new
+JosephGordonLevitt.name = "Joseph Gordon-Levitt"
+JosephGordonLevitt.save
+AnneHathaway = Person.new
+AnneHathaway.name = "Anne Hathaway"
+AnneHathaway.save
+
+
+puts "There are #{Movie.all.count} movies"
+puts "There are #{Person.all.count} people"
 
 # Prints a header for the movies output
 puts "Movies"
