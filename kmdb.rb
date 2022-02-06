@@ -71,6 +71,7 @@
 # TODO!
 Movie.destroy_all
 Person.destroy_all
+Role.destroy_all
 
 # Generate models and tables, according to the domain model
 # TODO!
@@ -79,28 +80,26 @@ Person.destroy_all
 # Insert data into your database that reflects the sample data shown above
 # Do not use hard-coded foreign key IDs.
 # TODO!
-
+#Movies Model
 BatmanBegins = Movie.new
 BatmanBegins.title = "Batman Begins"
 BatmanBegins.year = "2005"
 BatmanBegins.rated = "PG-13"
-BatmanBegins.person_id = "Christopher Nolan"
 BatmanBegins.save
 
 TheDarkKnight = Movie.new
 TheDarkKnight.title = "The Dark Knight"
 TheDarkKnight.year = "2008"
 TheDarkKnight.rated = "PG-13"
-TheDarkKnight.person_id = "Christopher Nolan"
 TheDarkKnight.save
 
 TheDarkKnightRises = Movie.new
 TheDarkKnightRises.title = "The Dark Knight"
 TheDarkKnightRises.year = "2008"
 TheDarkKnightRises.rated = "PG-13"
-TheDarkKnightRises.person_id = "Christopher Nolan"
 TheDarkKnightRises.save
 
+#People Model
 ChristianBale = Person.new
 ChristianBale.name = "Christian Bale"
 ChristianBale.save
@@ -133,10 +132,54 @@ JosephGordonLevitt.save
 AnneHathaway = Person.new
 AnneHathaway.name = "Anne Hathaway"
 AnneHathaway.save
+ChristopherNolan = Person.new
+ChristopherNolan.name = "Christopher Nolan"
+ChristopherNolan.save
 
+#Roles Model
+BruceWayne = Role.new
+BruceWayne.character_name = "Bruce Wayne"
+BruceWayne.save
+
+Alfred = Role.new
+Alfred.character_name = "Alfred"
+Alfred.save
+
+Ra = Role.new
+Ra.character_name = "Ra's Al Ghul"
+Ra.save
+
+RachelDawes = Role.new
+RachelDawes.character_name = "Rachel Dawes"
+RachelDawes.save
+
+CommissionerGordon = Role.new
+CommissionerGordon.character_name = "Commissioner Gordon"
+CommissionerGordon.save
+
+Joker = Role.new
+Joker.character_name = "Joker"
+Joker.save
+
+HarveyDent = Role.new
+HarveyDent.character_name = "Harvey Dent"
+HarveyDent.save
+
+Bane = Role.new
+Bane.character_name = "Bane"
+Bane.save
+
+JohnBlake = Role.new
+JohnBlake.character_name = "John Blake"
+JohnBlake.save
+
+SelinaKyle = Role.new
+SelinaKyle.character_name = "Selina Kyle"
+SelinaKyle.save
 
 puts "There are #{Movie.all.count} movies"
 puts "There are #{Person.all.count} people"
+puts "There are #{Role.all.count} Roles"
 
 # Prints a header for the movies output
 puts "Movies"
@@ -145,6 +188,8 @@ puts ""
 
 # Query the movies data and loop through the results to display the movies output
 # TODO!
+
+MoviesOutput
 
 # Prints a header for the cast output
 puts ""
