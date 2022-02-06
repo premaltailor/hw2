@@ -189,7 +189,7 @@ puts ""
 # Query the movies data and loop through the results to display the movies output
 # TODO!
 
-MoviesOutput
+
 
 # Prints a header for the cast output
 puts ""
