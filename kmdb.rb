@@ -80,24 +80,6 @@ Role.destroy_all
 # Insert data into your database that reflects the sample data shown above
 # Do not use hard-coded foreign key IDs.
 # TODO!
-#Movies Model
-BatmanBegins = Movie.new
-BatmanBegins.title = "Batman Begins"
-BatmanBegins.year = "2005"
-BatmanBegins.rated = "PG-13"
-BatmanBegins.save
-
-TheDarkKnight = Movie.new
-TheDarkKnight.title = "The Dark Knight"
-TheDarkKnight.year = "2008"
-TheDarkKnight.rated = "PG-13"
-TheDarkKnight.save
-
-TheDarkKnightRises = Movie.new
-TheDarkKnightRises.title = "The Dark Knight"
-TheDarkKnightRises.year = "2008"
-TheDarkKnightRises.rated = "PG-13"
-TheDarkKnightRises.save
 
 #People Model
 ChristianBale = Person.new
@@ -135,6 +117,31 @@ AnneHathaway.save
 ChristopherNolan = Person.new
 ChristopherNolan.name = "Christopher Nolan"
 ChristopherNolan.save
+christophernolan = Person.where({name: "Christopher Nolan"})[0]
+
+#Movies Model
+BatmanBegins = Movie.new
+BatmanBegins.title = "Batman Begins"
+BatmanBegins.year = "2005"
+BatmanBegins.rated = "PG-13"
+BatmanBegins.director_id = christophernolan.id
+BatmanBegins.save
+
+TheDarkKnight = Movie.new
+TheDarkKnight.title = "The Dark Knight"
+TheDarkKnight.year = "2008"
+TheDarkKnight.rated = "PG-13"
+TheDarkKnight.director_id = christophernolan.id
+TheDarkKnight.save
+
+TheDarkKnightRises = Movie.new
+TheDarkKnightRises.title = "The Dark Knight Rises"
+TheDarkKnightRises.year = "2012"
+TheDarkKnightRises.rated = "PG-13"
+TheDarkKnightRises.director_id = christophernolan.id
+TheDarkKnightRises.save
+
+
 
 #Roles Model
 BruceWayne = Role.new
@@ -188,7 +195,15 @@ puts ""
 
 # Query the movies data and loop through the results to display the movies output
 # TODO!
+# SELECT movies.title, movies.year_released, movies.rated, people.name 
+# FROM movies INNER JOIN people ON people.id = movies.person_id;
 
+movies = Movie.all
+
+
+for m in movies
+    puts "#{m.title}\t\t #{m.year}\t\t #{m.rated} \t\t #{m.director.name}"
+end
 
 
 # Prints a header for the cast output
