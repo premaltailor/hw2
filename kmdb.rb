@@ -75,7 +75,12 @@ Role.destroy_all
 
 # Generate models and tables, according to the domain model
 # TODO!
-
+# A one to many relationship between movie and roles; A movie can have many roles
+# A one to many relationship between actor and roles; An actor can have many roles
+# Generated 3 tables: Movies, People, and Roles
+# Movies table has the following collumns: title, year, rating, and director_id
+# People table has the following collumns: name
+# Roles table has the following collumns: character_name, actor_id, movie_id
 
 # Insert data into your database that reflects the sample data shown above
 # Do not use hard-coded foreign key IDs.
@@ -85,38 +90,51 @@ Role.destroy_all
 ChristianBale = Person.new
 ChristianBale.name = "Christian Bale"
 ChristianBale.save
+
 MichaelCaine = Person.new
 MichaelCaine.name = "Michael Caine"
 MichaelCaine.save
+
 LiamNeeson = Person.new
 LiamNeeson.name = "Liam Neeson"
 LiamNeeson.save
+
 KatieHolmes = Person.new
 KatieHolmes.name = "Katie Holmes"
+KatieHolmes.save
+
 GaryOldman = Person.new
 GaryOldman.name = "Gary Oldman"
 GaryOldman.save
+
 HeathLedger = Person.new
 HeathLedger.name = "Heath Ledger"
 HeathLedger.save
+
 AaronEckhart = Person.new
 AaronEckhart.name = "Aaron Eckhart"
 AaronEckhart.save
+
 MaggieGyllenhaal = Person.new
 MaggieGyllenhaal.name = "Maggie Gyllenhaal"
 MaggieGyllenhaal.save
+
 TomHardy = Person.new
 TomHardy.name = "Tom Hardy"
 TomHardy.save
+
 JosephGordonLevitt = Person.new
 JosephGordonLevitt.name = "Joseph Gordon-Levitt"
 JosephGordonLevitt.save
+
 AnneHathaway = Person.new
 AnneHathaway.name = "Anne Hathaway"
 AnneHathaway.save
+
 ChristopherNolan = Person.new
 ChristopherNolan.name = "Christopher Nolan"
 ChristopherNolan.save
+
 christophernolan = Person.where({name: "Christopher Nolan"})[0]
 
 #Movies Model
@@ -144,45 +162,85 @@ TheDarkKnightRises.save
 
 
 #Roles Model
-BruceWayne = Role.new
-BruceWayne.character_name = "Bruce Wayne"
+#Batman Begins
+batmanbegins = Movie.where({title: "Batman Begins"})[0]
+christianbale = Person.where({name: "Christian Bale"})[0]
+values = { character_name: "Bruce Wayne", actor_id: christianbale.id, movie_id: batmanbegins.id}
+BruceWayne = Role.new(values)
 BruceWayne.save
 
-Alfred = Role.new
-Alfred.character_name = "Alfred"
+michaelcaine = Person.where({name: "Michael Caine"})[0]
+values = { character_name: "Alfred", actor_id: michaelcaine.id, movie_id: batmanbegins.id}
+Alfred = Role.new(values)
 Alfred.save
 
-Ra = Role.new
-Ra.character_name = "Ra's Al Ghul"
-Ra.save
+liamneeson = Person.where({name: "Liam Neeson"})[0]
+values = { character_name: "Ra's Al Ghul", actor_id: liamneeson.id, movie_id: batmanbegins.id}
+Ras = Role.new(values)
+Ras.save
 
-RachelDawes = Role.new
-RachelDawes.character_name = "Rachel Dawes"
+katieholmes = Person.where({name: "Katie Holmes"})[0]
+values = { character_name: "Rachel Dawes", actor_id: katieholmes.id, movie_id: batmanbegins.id}
+RachelDawes = Role.new(values)
 RachelDawes.save
 
-CommissionerGordon = Role.new
-CommissionerGordon.character_name = "Commissioner Gordon"
-CommissionerGordon.save
+garyoldman = Person.where({name: "Gary Oldman"})[0]
+values = { character_name: "Commissioner Gordon", actor_id: garyoldman.id, movie_id: batmanbegins.id}
+Gordon = Role.new(values)
+Gordon.save
 
-Joker = Role.new
-Joker.character_name = "Joker"
+#The Dark Knight
+thedarkknight = Movie.where({title: "The Dark Knight"})[0]
+
+values = { character_name: "Bruce Wayne", actor_id: christianbale.id, movie_id: thedarkknight.id}
+BruceWayne = Role.new(values)
+BruceWayne.save
+
+heathledger = Person.where({name: "Heath Ledger"})[0]
+values = { character_name: "Joker", actor_id: heathledger.id, movie_id: thedarkknight.id}
+Joker = Role.new(values)
 Joker.save
 
-HarveyDent = Role.new
-HarveyDent.character_name = "Harvey Dent"
-HarveyDent.save
+aaroneckhart = Person.where({name: "Aaron Eckhart"})[0]
+values = { character_name: "Harvey Dent", actor_id: aaroneckhart.id, movie_id: thedarkknight.id}
+Harvey = Role.new(values)
+Harvey.save
 
-Bane = Role.new
-Bane.character_name = "Bane"
+values = { character_name: "Alfred", actor_id: michaelcaine.id, movie_id: thedarkknight.id}
+Alfred = Role.new(values)
+Alfred.save
+
+maggiegyllenhaal = Person.where({name: "Maggie Gyllenhaal"})[0]
+values = { character_name: "Rachel Dawes", actor_id: maggiegyllenhaal.id, movie_id: thedarkknight.id}
+RachelDawes = Role.new(values)
+RachelDawes.save
+
+#The Dark Knight Rises
+thedarkknightrises = Movie.where({title: "The Dark Knight Rises"})[0]
+
+values = { character_name: "Bruce Wayne", actor_id: christianbale.id, movie_id: thedarkknightrises.id}
+BruceWayne = Role.new(values)
+BruceWayne.save
+
+values = { character_name: "Commissioner Gordon", actor_id: garyoldman.id, movie_id: thedarkknightrises.id}
+Gordon = Role.new(values)
+Gordon.save
+
+tomhardy = Person.where({name: "Tom Hardy"})[0]
+values = { character_name: "Bane", actor_id: tomhardy.id, movie_id: thedarkknightrises.id}
+Bane = Role.new(values)
 Bane.save
 
-JohnBlake = Role.new
-JohnBlake.character_name = "John Blake"
+joseph = Person.where({name: "Joseph Gordon-Levitt"})[0]
+values = { character_name: "John Blake", actor_id: joseph.id, movie_id: thedarkknightrises.id}
+JohnBlake = Role.new(values)
 JohnBlake.save
 
-SelinaKyle = Role.new
-SelinaKyle.character_name = "Selina Kyle"
+annehathaway = Person.where({name: "Anne Hathaway"})[0]
+values = { character_name: "Selina Kyle", actor_id: annehathaway.id, movie_id: thedarkknightrises.id}
+SelinaKyle = Role.new(values)
 SelinaKyle.save
+
 
 puts "There are #{Movie.all.count} movies"
 puts "There are #{Person.all.count} people"
@@ -199,8 +257,6 @@ puts ""
 # FROM movies INNER JOIN people ON people.id = movies.person_id;
 
 movies = Movie.all
-
-
 for m in movies
     puts "#{m.title}\t\t #{m.year}\t\t #{m.rated} \t\t #{m.director.name}"
 end
@@ -214,3 +270,8 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie
 # TODO!
+
+roles = Role.all
+for r in roles
+    puts "#{r.movie.title}\t\t #{r.actor.name}\t\t #{r.character_name}"
+end
