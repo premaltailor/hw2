@@ -257,7 +257,7 @@ puts ""
 # FROM movies INNER JOIN people ON people.id = movies.person_id;
 
 movies = Movie.all
-for m in movies
+for m in movies 
     puts "#{m.title}\t\t #{m.year}\t\t #{m.rated} \t\t #{m.director.name}"
 end
 
