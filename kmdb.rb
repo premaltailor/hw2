@@ -134,7 +134,6 @@ AnneHathaway.save
 ChristopherNolan = Person.new
 ChristopherNolan.name = "Christopher Nolan"
 ChristopherNolan.save
-
 christophernolan = Person.where({name: "Christopher Nolan"})[0]
 
 #Movies Model
@@ -159,11 +158,10 @@ TheDarkKnightRises.rated = "PG-13"
 TheDarkKnightRises.director_id = christophernolan.id
 TheDarkKnightRises.save
 
-
-
 #Roles Model
 #Batman Begins
 batmanbegins = Movie.where({title: "Batman Begins"})[0]
+
 christianbale = Person.where({name: "Christian Bale"})[0]
 values = { character_name: "Bruce Wayne", actor_id: christianbale.id, movie_id: batmanbegins.id}
 BruceWayne = Role.new(values)
