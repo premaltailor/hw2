@@ -242,10 +242,6 @@ SelinaKyle = Role.new(values)
 SelinaKyle.save
 
 
-puts "There are #{Movie.all.count} movies"
-puts "There are #{Person.all.count} people"
-puts "There are #{Role.all.count} Roles"
-
 # Prints a header for the movies output
 puts "Movies"
 puts "======"
